@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 group :assets do
+  gem 'haml'
   gem 'sass'
   gem 'compass'
   gem 'compass'
