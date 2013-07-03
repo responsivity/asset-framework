@@ -1,0 +1,5 @@
+#!/bin/sh
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)/../"
+
+compass compile -c "$DIR/config.rb" -s compressed --css-dir="$DIR/public/css/min"
+compass compile -c "$DIR/config.rb" -s expanded --css-dir="$DIR/public/css"

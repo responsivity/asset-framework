@@ -47,5 +47,6 @@ DEPENDENCIES
   compass
   guard
   haml
+  pry
   sass
   zurb-foundation

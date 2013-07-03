@@ -8,3 +8,7 @@ group :assets do
   gem 'zurb-foundation'
   gem 'guard'
 end
+
+group :development do
+  gem 'pry'
+end
