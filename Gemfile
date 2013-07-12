@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'sinatra'
+
 group :assets do
   gem 'haml'
   gem 'sass'

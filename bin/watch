@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+require 'listen'
+
+def type_changed?(type, files)
+  files.any?{|f| File.extname == ".#{type}" }
+end
+
+def compile_haml
+  require 'pry'; binding.pry
+  Dir.glob("#{root}/haml/*.haml").each do |file|
+    target = File.join('public', File.basename(file).gsub('.haml','.html'))
+    system "haml #{file} #{target}"
+  end
+end
+
+def compile_sass
+  system "compass compile"
+end
+
+root = File.expand_path('../..', __FILE__)
+
+watching = {
+  :haml => {
+    :dir => 'haml',
+    :pattern => '.*haml$'
+  },
+  :sass => {
+    :dir => 'sass',
+    :pattern => '.*scss$'
+  }
+}
+
+puts 'Listenting for changes'
+
+Listen.to!( *watching.map{|k,v| v[:dir] } , :filter => /(#{watching.map{|k,v| v[:pattern] }.join('|')})/) do |mod, add, del|
+  if type_changed?(:haml)
+    compile_haml
+  elsif type_changed?(:sass)
+    compile_sass
+  end
+end

@@ -3,7 +3,7 @@ require 'zurb-foundation'
 http_path       = "/"
 css_dir         = "public/css"
 sass_dir        = "sass"
-images_dir      = "public/images"
+images_dir      = "public/img"
 javascripts_dir = "public/js"
 
 # You can select your preferred output style here (can be overridden via the command line):
