@@ -12,3 +12,25 @@
   $color: #fff !default;
   @include text-shadow($color 1px 1px 0);
 }
+
+@mixin webfont($family, $directory, $filename, $weight: normal, $style: normal){
+  @font-face {
+    font-family: $family;
+    font-weight: $weight;
+    font-style:  $style;
+
+    src: url('/fonts/#{ $directory }/#{ $filename }-webfont.eot');
+    src: url('/fonts/#{ $directory }/#{ $filename }-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/#{ $directory }/#{ $filename }-webfont.woff') format('woff'),
+         url('/fonts/#{ $directory }/#{ $filename }.ttf') format('truetype');
+  }
+}
+
+@mixin webfonts($family, $path, $attributes...){
+  @each $attr in $attributes {
+    $file:   nth($attr, 1);
+    $weight: nth($attr, 2);
+    $style:  nth($attr, 3);
+    @include webfont($family, $path, $file, $weight, $style);
+  }
+}
