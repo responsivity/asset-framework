@@ -1,0 +1,14 @@
+@mixin fixed-background {
+  background-position: top center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+@mixin text-outline{
+  $color: #fff !default;
+  @include text-shadow($color 1px 1px 0);
+}
